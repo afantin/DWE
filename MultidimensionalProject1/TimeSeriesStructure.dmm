@@ -1,0 +1,279 @@
+﻿<MiningStructure xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="8eaba0d4-d0d3-41d9-8082-fd3b7f3b0f11" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>TimeSeriesStructure</ID>
+  <Name>TimeSeriesStructure</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CaseTableName</Name>
+      <Value>dbo_FactTransacciones</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="4d6fba16-d864-4526-b0e4-7a7ea3657932">
+    <DataSourceViewID>DWE</DataSourceViewID>
+  </Source>
+  <Columns>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="44161fd7-3f89-4aeb-80fe-d39b4f2f850b">
+      <ID>Cantidad</ID>
+      <Name>Cantidad</Name>
+      <Type>Long</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ec1b3229-1815-4062-8023-39f4ab6332da">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f04c0c1d-611b-4ecb-9083-6c550916977f">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>cantidad</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="3f3ddc52-9f80-45a0-93f0-5defee742d4e">
+      <ID>Id Canal</ID>
+      <Name>Id Canal</Name>
+      <IsKey>true</IsKey>
+      <Type>Text</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="521ec1d0-1676-4b1c-b5be-0d729f4cff48">
+          <DataType>WChar</DataType>
+          <DataSize>2</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6d835034-e8a1-4109-b500-284939e62052">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>idCanal</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="a112fe43-eb7b-454b-9a90-334763a4d55d">
+      <ID>Id Cliente</ID>
+      <Name>Id Cliente</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key Time</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="35a7c0ee-464a-4dec-8e1a-e804100263d4">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3f2c1987-0006-4549-b6df-b2923a3c67a7">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>idCliente</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="3388a413-d9b8-4ced-b019-716fdcb61e93">
+      <ID>Id Operacion</ID>
+      <Name>Id Operacion</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fb22c85d-34c7-4454-88e2-cd78cfd98af3">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="12cd2896-e325-41b0-a316-0242ef2d220a">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>idOperacion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="c094d302-164a-4bda-8a7f-8e03af3e79bf">
+      <ID>Id Respuesta</ID>
+      <Name>Id Respuesta</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="87241aa0-6c42-4686-b2fd-3a6f739a4281">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d87297c9-331f-4c81-b059-2bbe60cf3fdf">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>idRespuesta</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="0af2ff26-04e4-4df3-b43f-0c91479540ab">
+      <ID>Id Tiempo</ID>
+      <Name>Id Tiempo</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9d2ea514-3ac2-4f5f-8b80-6f66574befe9">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0be51473-a608-416a-9843-a2e2c265e4f3">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>idTiempo</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="bd58b8bb-e36d-421a-90c5-2e5fbe3cbbfb">
+      <ID>Id Transaccion</ID>
+      <Name>Id Transaccion</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f53f7de9-f882-4a49-8a96-1a4e3dafb836">
+          <DataType>BigInt</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f65389ea-27a4-430e-a9a4-1c6ebec8156d">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>idTransaccion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="25ef3e88-1291-4751-8510-87261976d95b">
+      <ID>Id Ubicacion Transaccion</ID>
+      <Name>Id Ubicacion Transaccion</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="09493f80-231f-4a59-88dc-3ec932de14e9">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f2591854-2d1b-4af2-b55a-968209b84155">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>idUbicacionTransaccion</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="bd257f60-5217-4bd6-8bde-1179b96cbb5b">
+      <ID>Monto</ID>
+      <Name>Monto</Name>
+      <Type>Double</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ec68e191-5a63-45a2-aaf0-d02b4a26636f">
+          <DataType>Double</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="03198e5e-8ebf-4c39-9168-80823f7b3a82">
+            <TableID>dbo_FactTransacciones</TableID>
+            <ColumnID>monto</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+  </Columns>
+  <MiningModels>
+    <MiningModel dwd:design-time-name="d108fcf3-5bae-46dc-83f0-29f4eb3ba6db">
+      <ID>TimeSeriesModel</ID>
+      <Name>TimeSeriesModel</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Time_Series</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="6298ad99-08ca-43d2-bb4b-aec3f6e22dfc">
+          <ID>Cantidad</ID>
+          <Name>Cantidad</Name>
+          <SourceColumnID>Cantidad</SourceColumnID>
+          <Usage>Predict</Usage>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="1853bdc7-53c9-48a4-b8e0-967c28b5a67d">
+          <ID>Id Canal</ID>
+          <Name>Id Canal</Name>
+          <SourceColumnID>Id Canal</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="c846ef55-caa0-476a-be21-7dfdcf11f959">
+          <ID>Id Cliente</ID>
+          <Name>Id Cliente</Name>
+          <SourceColumnID>Id Cliente</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="2485c71a-bd94-4071-9e37-fcbe20953bb3">
+          <ID>Id Operacion</ID>
+          <Name>Id Operacion</Name>
+          <SourceColumnID>Id Operacion</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="ee9c961d-ff74-456e-b643-15661cabf590">
+          <ID>Id Respuesta</ID>
+          <Name>Id Respuesta</Name>
+          <SourceColumnID>Id Respuesta</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="76ca6b4e-29b9-482d-b95b-1d6ab1c27e3f">
+          <ID>Id Tiempo</ID>
+          <Name>Id Tiempo</Name>
+          <SourceColumnID>Id Tiempo</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="d2366ae8-1634-439a-8ee8-de92104b2bb7">
+          <ID>Id Transaccion</ID>
+          <Name>Id Transaccion</Name>
+          <SourceColumnID>Id Transaccion</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="01b30628-4a89-4c35-88a2-3d6b83013324">
+          <ID>Id Ubicacion Transaccion</ID>
+          <Name>Id Ubicacion Transaccion</Name>
+          <SourceColumnID>Id Ubicacion Transaccion</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="33bd2031-13e6-4a3d-90df-cc166ca54dce">
+          <ID>Monto</ID>
+          <Name>Monto</Name>
+          <SourceColumnID>Monto</SourceColumnID>
+          <Usage>Predict</Usage>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+      </Columns>
+      <AllowDrillThrough>true</AllowDrillThrough>
+    </MiningModel>
+  </MiningModels>
+</MiningStructure>

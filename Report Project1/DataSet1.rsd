@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DataSource1</DataSourceReference>
+      <CommandText>SELECT  top 100      FactTransacciones.cantidad, FactTransacciones.monto, DimDate.FullDateAlternateKey, DimCanales.nom_canal, DimClientes.Apellido, DimClientes.Nombre
+FROM            FactTransacciones INNER JOIN
+                         DimCanales ON FactTransacciones.idCanal = DimCanales.idCanal INNER JOIN
+                         DimClientes ON FactTransacciones.idCliente = DimClientes.idCliente INNER JOIN
+                         DimDate ON FactTransacciones.idTiempo = DimDate.DateKey
+ORDER BY DimClientes.Apellido, DimClientes.Nombre, DimDate.FullDateAlternateKey, DimCanales.nom_canal</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Cantidad">
+        <DataField>cantidad</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Monto">
+        <DataField>monto</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Fecha">
+        <DataField>FullDateAlternateKey</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Canal">
+        <DataField>nom_canal</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Apellido">
+        <DataField>Apellido</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nombre">
+        <DataField>Nombre</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
