@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CargaDimensiones"
   DTS:PackageType="5"
-  DTS:VersionBuild="122"
-  DTS:VersionGUID="{B2412309-E3FF-4019-9111-83505278C9DD}">
+  DTS:VersionBuild="130"
+  DTS:VersionGUID="{D9A4FA33-B5DB-4611-9BDE-6E8C932515F9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -505,7 +505,7 @@
                     <inputColumn
                       refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[moneda]"
                       cachedDataType="wstr"
-                      cachedLength="100"
+                      cachedLength="30"
                       cachedName="moneda"
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[moneda]" />
                   </inputColumns>
@@ -799,13 +799,6 @@
                       externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Registro]"
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[EnterDateTime]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[Code]"
-                      cachedDataType="wstr"
-                      cachedLength="250"
-                      cachedName="Code"
-                      externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
-                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[Code]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[fechanac]"
                       cachedDataType="dbTimeStamp2"
                       cachedName="fechanac"
@@ -844,13 +837,6 @@
                       externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[titulo]"
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[titulo]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[email]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="email"
-                      externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[mail]"
-                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[email]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[nombre]"
                       cachedDataType="wstr"
                       cachedLength="100"
@@ -864,6 +850,34 @@
                       cachedName="apellido"
                       externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[Apellido]"
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[apellido]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[LastChgDateTime]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="LastChgDateTime"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[fecha_desde]"
+                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[LastChgDateTime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[id_sucursal]"
+                      cachedDataType="numeric"
+                      cachedName="id_sucursal"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[idUbicacion]"
+                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[id_sucursal]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
+                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].Columns[email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[email]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -909,14 +923,26 @@
                       length="30"
                       name="moneda" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[mail]"
-                      dataType="wstr"
-                      length="100"
-                      name="mail" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[idUbicacion]"
                       dataType="i8"
                       name="idUbicacion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[fecha_desde]"
+                      dataType="dbDate"
+                      name="fecha_desde" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[fecha_hasta]"
+                      dataType="dbDate"
+                      name="fecha_hasta" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\DimClientes.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      dataType="wstr"
+                      length="100"
+                      name="email" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1880,7 +1906,7 @@ where [refTable].[localidad] = ?</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].ExternalColumns[moneda]"
-                      length="100"
+                      length="30"
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[moneda]"
                       name="moneda"
                       truncationRowDisposition="FailComponent" />
@@ -1951,6 +1977,15 @@ where [refTable].[localidad] = ?</property>
                       length="250"
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[ValidationStatus]"
                       name="ValidationStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -2059,7 +2094,7 @@ where [refTable].[localidad] = ?</property>
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].ExternalColumns[moneda]"
                       dataType="wstr"
-                      length="100"
+                      length="30"
                       name="moneda" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Output].ExternalColumns[EnterDateTime]"
@@ -2210,7 +2245,7 @@ where [refTable].[localidad] = ?</property>
                     <outputColumn
                       refId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Error Output].Columns[moneda]"
                       dataType="wstr"
-                      length="100"
+                      length="30"
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Error Output].Columns[moneda]"
                       name="moneda" />
                     <outputColumn
@@ -2265,6 +2300,11 @@ where [refTable].[localidad] = ?</property>
                       lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\MDSClientes.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>

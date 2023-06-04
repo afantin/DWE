@@ -10,6 +10,8 @@
     [ingreso]        MONEY          NULL,
     [moneda]         CHAR (30)      NULL,
     [mail]           NVARCHAR (100) NULL,
+    [fecha_desde] DATE NULL, 
+    [fecha_hasta] DATE NULL, 
     CONSTRAINT [PK_Clientes] PRIMARY KEY CLUSTERED ([idCliente] ASC)
 );
 
