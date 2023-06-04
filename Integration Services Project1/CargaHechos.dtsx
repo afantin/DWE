@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="100"
-  DTS:VersionGUID="{59E4A6BC-E124-444E-B52C-18C0C3A6B222}">
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{5CC10312-C28C-4F80-A10C-36DDFB54FB6E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -610,17 +610,17 @@
                           cachedName="id_respuesta"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\BuscafRespuesta.Outputs[Lookup Match Output].Columns[id_respuesta]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Inputs[Aggregate Input 1].Columns[idCliente]"
-                          cachedDataType="i4"
-                          cachedName="idCliente"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[idCliente]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Inputs[Aggregate Input 1].Columns[idCanal]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="2"
                           cachedName="idCanal"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\BuscaCanales.Outputs[Lookup Match Output].Columns[idCanal]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Inputs[Aggregate Input 1].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[id]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -772,32 +772,6 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[idCliente]"
-                          dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[idCliente]"
-                          name="idCliente">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Specifies the ID of the input column used in the aggregation."
-                              name="AggregationColumnId">#{Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[idCliente]}</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the type of aggregation."
-                              name="AggregationType"
-                              typeConverter="AggregationType">0</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                              name="IsBig">1</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the string comparison options."
-                              name="AggregationComparisonFlags">0</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[idCanal]"
                           codePage="1252"
                           dataType="str"
@@ -841,6 +815,32 @@
                               description="Specifies the type of aggregation."
                               name="AggregationType"
                               typeConverter="AggregationType">4</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                              name="IsBig">1</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the string comparison options."
+                              name="AggregationComparisonFlags">0</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[id]"
+                          name="id">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the ID of the input column used in the aggregation."
+                              name="AggregationColumnId">#{Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[id]}</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the type of aggregation."
+                              name="AggregationType"
+                              typeConverter="AggregationType">0</property>
                             <property
                               dataType="System.Int32"
                               description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
@@ -1031,13 +1031,15 @@ where [refTable].[idCanal] = ?</property>
                       description="Specifies the SQL statement that generates the lookup table."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select idCliente from dimclientes</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select id,idCliente from dimclientes
+where fecha_hasta is null</property>
                     <property
                       dataType="System.String"
                       description="Specifies a SQL statement that uses parameters to generate the lookup table."
                       expressionType="Notify"
                       name="SqlCommandParam"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select idCliente from dimclientes) [refTable]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select id,idCliente from dimclientes
+where fecha_hasta is null) [refTable]
 where [refTable].[idCliente] = ?</property>
                     <property
                       dataType="System.Int32"
@@ -1069,7 +1071,7 @@ where [refTable].[idCliente] = ?</property>
                     <property
                       dataType="System.String"
                       description="Indicates whether to reference metadata in an XML format."
-                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idCliente" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idCliente" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -1126,17 +1128,17 @@ where [refTable].[idCliente] = ?</property>
                       synchronousInputId="Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Inputs[Lookup Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[idCliente]"
+                          refId="Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[id]"
                           dataType="i4"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[idCliente]"
-                          name="idCliente"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\BuscaClientes.Outputs[Lookup Match Output].Columns[id]"
+                          name="id"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
                               dataType="System.String"
                               description="Specifies the column in the reference table from which a column is copied."
-                              name="CopyFromReferenceColumn">idCliente</property>
+                              name="CopyFromReferenceColumn">id</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -2489,12 +2491,6 @@ where [refTable].[id] = ?</property>
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\FactTransacciones.Inputs[OLE DB Destination Input].ExternalColumns[cantidad]"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[cantidad]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\FactTransacciones.Inputs[OLE DB Destination Input].Columns[idCliente]"
-                          cachedDataType="i4"
-                          cachedName="idCliente"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\FactTransacciones.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[idCliente]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\FactTransacciones.Inputs[OLE DB Destination Input].Columns[idCanal]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -2502,6 +2498,12 @@ where [refTable].[id] = ?</property>
                           cachedName="idCanal"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\FactTransacciones.Inputs[OLE DB Destination Input].ExternalColumns[idCanal]"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[idCanal]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\FactTransacciones.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\FactTransacciones.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Aggregate.Outputs[Aggregate Output 1].Columns[id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3448,6 +3450,7 @@ where [refTable].[id] = ?</property>
       DTS:refId="Package\Limpio tabla hechos"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{1C9394B1-E3F0-4F8B-A80C-FBFCC6815C3D}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -3491,7 +3494,7 @@ where [refTable].[id] = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="205,134"
+          PanelSize="214,134"
           Size="214,177"
           Id="Package\Foreach Loop Container"
           TopLeft="90.5,137.5" />
@@ -3594,7 +3597,7 @@ where [refTable].[id] = ?</property>
           Id="Package\Foreach Loop Container\Data Flow Task\ErrorRespuesta"
           TopLeft="420,267" />
         <NodeLayout
-          Size="149,42"
+          Size="143,42"
           Id="Package\Foreach Loop Container\Data Flow Task\BuscaClientes"
           TopLeft="626,163" />
         <NodeLayout
@@ -3611,25 +3614,25 @@ where [refTable].[id] = ?</property>
           TopLeft="848,267" />
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Lookup Match Output3]"
-          TopLeft="775,184.5">
+          TopLeft="769,184.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69,0"
+              EndConnector="75,0"
               Start="0,0"
-              End="61.5,0">
+              End="67.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="61.5,0" />
+                    End="67.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-17.44138671875,5,96.3827734375,11.609375"
+              BoundingBox="-14.44138671875,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3905,7 +3908,7 @@ where [refTable].[id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Lookup No Match Output2]"
-          TopLeft="702,205">
+          TopLeft="700.5,205">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4161,7 +4164,7 @@ where [refTable].[id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4171,7 +4174,7 @@ where [refTable].[id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
